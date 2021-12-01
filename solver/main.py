@@ -1,8 +1,14 @@
 # from slitherlink import show_slitherlink, read_slitherlink
-# from pysat.solvers import Glucose3
+from pysat_slitherlink_binomal import pysat_slitherlink_binomal
 
 
 if __name__ == '__main__':
+
+    # slitherlink = [
+    #     ". 3 .",
+    #     ". 0 .",
+    #     ". . .",
+    # ]
 
     # slitherlink = [
     #     ". 1 . . 3 . 1 3",
@@ -64,23 +70,23 @@ if __name__ == '__main__':
     #     "3 . 2 . . 3 3 2 3 . . 2 . 2 2 2 . . . 3"
     # ]
 
-    slitherlink = [
-        "3 2 3 2 . . . . . . 3 . 3 . 3",
-        ". 3 2 2 2 . 2 . 2 . . . . . .",
-        ". 1 . . . 1 1 . . . . . 2 . 2",
-        ". 2 . . . . . . . 2 . 3 2 . .",
-        ". 1 . 2 1 1 1 . 2 3 . 1 . . .",
-        ". . . 2 3 1 . . . . 2 2 3 . 3",
-        ". 2 1 1 . 2 2 . 3 . . 1 . . 3",
-        "3 . . 2 2 . 1 . 1 . . 0 2 1 .",
-        "3 1 . . . 3 1 2 . . 3 . 3 . 3",
-        ". 3 . . . . . . . . . 2 1 . .",
-        "1 . 2 . . . 2 2 1 2 2 . 2 . .",
-        ". 3 . 2 . . 2 2 . . . 2 0 . .",
-        "2 . . . 2 3 . . . . 2 . 2 . .",
-        "2 . 2 2 . . 1 2 3 2 . 3 . 2 .",
-        ". . . 2 3 . . . . . . . 3 2 3"
-    ]
+    # slitherlink = [
+    #     "3 2 3 2 . . . . . . 3 . 3 . 3",
+    #     ". 3 2 2 2 . 2 . 2 . . . . . .",
+    #     ". 1 . . . 1 1 . . . . . 2 . 2",
+    #     ". 2 . . . . . . . 2 . 3 2 . .",
+    #     ". 1 . 2 1 1 1 . 2 3 . 1 . . .",
+    #     ". . . 2 3 1 . . . . 2 2 3 . 3",
+    #     ". 2 1 1 . 2 2 . 3 . . 1 . . 3",
+    #     "3 . . 2 2 . 1 . 1 . . 0 2 1 .",
+    #     "3 1 . . . 3 1 2 . . 3 . 3 . 3",
+    #     ". 3 . . . . . . . . . 2 1 . .",
+    #     "1 . 2 . . . 2 2 1 2 2 . 2 . .",
+    #     ". 3 . 2 . . 2 2 . . . 2 0 . .",
+    #     "2 . . . 2 3 . . . . 2 . 2 . .",
+    #     "2 . 2 2 . . 1 2 3 2 . 3 . 2 .",
+    #     ". . . 2 3 . . . . . . . 3 2 3"
+    # ]
 
     # slitherlink = [
     #     "3 . 2 . . . 3 . . . . 3 1 . . 2 . .",
@@ -103,4 +109,14 @@ if __name__ == '__main__':
     #     ". 2 2 2 . . 2 2 . 2 . 2 2 . . . 2 ."
     # ]
 
-    # pysat_slitherlink_binomal(slitherlink)
+    slitherlink = []
+
+    size = "25"
+    print("Running " + size)
+
+    with open("input\\" + size + "x30" + ".txt", "r") as file:
+        lines = file.read().splitlines()
+        for line in lines:
+            slitherlink.append(str(line))
+
+    pysat_slitherlink_binomal(slitherlink)

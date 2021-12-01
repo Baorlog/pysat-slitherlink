@@ -1,10 +1,11 @@
 from pysat.solvers import Glucose3
-from slitherlink import read_slitherlink, get_vert_edges, show_slitherlink, check_valid, apply_known_patterns
+from solver.slitherlink import read_slitherlink, get_vert_edges, show_slitherlink, check_valid, apply_known_patterns
 import time
+import datetime
 
 
 def current_milli_time():
-    return int(round(time.time() * 1000))
+    return time.time() * 1000
 
 
 def pysat_slitherlink_binomal(slitherlink):
@@ -101,25 +102,31 @@ def pysat_slitherlink_binomal(slitherlink):
 
     apply_known_patterns(slitherlink, g, num_clause)
 
-    start = current_milli_time()
-    g.solve()
+    start = time.time()
+    success = g.solve()
 
-    var_count = 0
-    loop_count = 0
+    if success:
 
-    # Rule 3: Only 1 loop exists
-    for solution in g.enum_models():
-        loop_count += 1
-        if check_valid(solution):
-            # show_slitherlink(solution, slitherlink)
-            # var_count = len(solution)
-            # print(solution)
-            break
-    end = current_milli_time()
+        var_count = 0
+        loop_count = 0
 
-    # print("Time to solve: " + str(end - start) + " (ms)")
-    # print("Number of clauses: " + str(num_clause) + " clauses.")
-    # print("Number of variables: " + str(var_count))
-    # print("Number of loops (for rule 3): " + str(loop_count))
+        # Rule 3: Only 1 loop exists
+        for solution in g.enum_models():
+            loop_count += 1
+            if check_valid(solution):
+                show_slitherlink(solution, slitherlink)
+                var_count = len(solution)
+                print(solution)
+                break
+        end = time.time()
 
-    return solution
+        print("Time to solve: " + str(end - start) + " (ms)")
+        print("Number of clauses: " + str(num_clause) + " clauses.")
+        print("Number of variables: " + str(var_count))
+        print("Number of loops (for rule 3): " + str(loop_count))
+
+        return success, solution, end-start, num_clause, var_count, loop_count
+
+    else:
+        return success, None, None, None, None, None
+

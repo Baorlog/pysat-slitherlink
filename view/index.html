@@ -5,8 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slitherlink</title>
+    <link rel="stylesheet" href="/view/style.css">    
 </head>
 <body>
-    
+    <h1>Slitherlink</h1>
+    <div class="container">
+        <div id="slitherlink-container">
+            <div id="slitherlink">
+                
+            </div>
+        </div>
+        <div id="configuration">
+            <div class="size">
+                <input type="number" placeholder="row" min="5" max="20" id="size-row">
+                X
+                <input type="number" placeholder="col" min="5" max="20" id="size-col">
+            </div>
+            <div class="buttons">
+                <button id="generate">
+                    Generate
+                </button>
+                <button id="solve">
+                    SOLVE!!!
+                </button>
+            </div>
+            <div class="result">
+                <div class="row">
+                    <label for="time">Time: </label>
+                    <span id="time"></span>
+                </div>
+                <div class="row">
+                    <label for="clause">Clauses: </label>
+                    <span id="clause"></span>
+                </div>
+                <div class="row">
+                    <label for="loop">Loops: </label>
+                    <span id="loop"></span>
+                </div>
+                <div class="row">
+                    <label for="variable">Variables: </label>
+                    <span id="variable"></span>
+                </div>
+                <div class="var-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/view/index.js"></script>
 </body>
 </html>
