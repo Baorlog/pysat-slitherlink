@@ -111,10 +111,10 @@ if __name__ == '__main__':
 
     slitherlink = []
 
-    size = "25"
+    size = "30"
     print("Running " + size)
 
-    with open("input\\" + size + "x30" + ".txt", "r") as file:
+    with open("input\\" + size + "x" + size + ".txt", "r") as file:
         lines = file.read().splitlines()
         for line in lines:
             slitherlink.append(str(line))

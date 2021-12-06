@@ -102,6 +102,7 @@ def pysat_slitherlink_binomal(slitherlink):
 
     apply_known_patterns(slitherlink, g, num_clause)
 
+    print("Processing...")
     start = time.time()
     success = g.solve()
 

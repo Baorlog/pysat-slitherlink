@@ -9,6 +9,7 @@ $(document).ready(() => {
     $("#generate").click(() => {
         row = $("#size-row").val();
         col = $("#size-col").val();
+        slitherMatrix = [];
         generateSlither(row, col);
     });
 
@@ -46,12 +47,12 @@ const generateSlither = (row, col) => {
                     }));
                 }
                 else {
-                    $(slither).append($("<div>", {class: "vertical", id: `e-${(row+1)*col + y*row + x + 1}`}));
+                    $(slither).append($("<div>", {class: "vertical", id: `e-${(parseInt(row)+1)*parseInt(col) + y*parseInt(row) + x + 1}`}));
                 }
             }
             else {
                 if(j % 2) {
-                    $(slither).append($("<div>", {class: "horizontal", id: `e-${x*col + y + 1}`}));
+                    $(slither).append($("<div>", {class: "horizontal", id: `e-${x*parseInt(col) + y + 1}`}));
                 }
                 else {
                     $(slither).append($("<div>", {class: "dot"}))
